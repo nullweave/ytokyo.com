@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ytokyo | Professional Services & Custom Solutions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        
+        :root {
+            --bg-grad: linear-gradient(135deg, #1e1b4b, #311005);
+            --card-bg: #1e1b4b;
+            --card-border: #3730a3;
+            --text-main: #faf5ff;
+            --text-muted: #c7d2fe;
+            --accent: #f97316;
+            --accent-hover: #ea580c;
+            --body-bg: #090514;
+            --font: 'Playfair Display', serif, sans-serif;
+            --card-radius: 0.75rem;
+            --card-shadow: none;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font);
+            background: var(--body-bg);
+            color: var(--text-muted);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        a:hover {
+            color: var(--accent-hover);
+        }
+    
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background-image: radial-gradient(circle at 10% 20%, rgba(255,255,255,0.03) 0%, transparent 40%);
+            background-size: 100% 100%;
+            opacity: 0.8;
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2.5rem 8%;
+            position: absolute;
+            top: 0; left: 0; width: 100%;
+            z-index: 10;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-main);
+            letter-spacing: -1px;
+        }
+        
+        .logo span {
+            color: var(--accent);
+        }
+        
+        nav {
+            display: flex;
+            gap: 2.5rem;
+        }
+        
+        nav a {
+            color: var(--text-muted);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: var(--text-main);
+        }
+        
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 8%;
+            background: var(--bg-grad);
+        }
+        
+        .hero-subtitle {
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero-title {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 700;
+            color: var(--text-main);
+            max-width: 900px;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            letter-spacing: -1px;
+        }
+        
+        .hero-desc {
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
+            color: var(--text-muted);
+            max-width: 700px;
+            margin-bottom: 3rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: #ffffff;
+            padding: 1rem 2.5rem;
+            border-radius: var(--card-radius);
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+        
+        .btn:hover {
+            background: transparent;
+            border-color: var(--accent);
+            color: var(--text-main);
+            transform: translateY(-2px);
+        }
+        
+        section {
+            padding: 8rem 8%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+        
+        .section-title {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 700;
+            color: var(--text-main);
+            letter-spacing: -0.5px;
+        }
+        
+        .section-subtitle {
+            color: var(--accent);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            padding: 3rem;
+            border-radius: var(--card-radius);
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent);
+        }
+        
+        .card-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 1.2rem;
+        }
+        
+        .about-wrap {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+        
+        @media (max-width: 992px) {
+            .about-wrap {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+        }
+        
+        .about-img {
+            background: var(--bg-grad);
+            border-radius: var(--card-radius);
+            aspect-ratio: 1.4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--card-border);
+        }
+        
+        .contact-wrap {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 5rem;
+        }
+        
+        @media (max-width: 992px) {
+            .contact-wrap {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        input, textarea {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            padding: 1.2rem;
+            color: var(--text-main);
+            font-family: var(--font);
+            border-radius: var(--card-radius);
+            width: 100%;
+        }
+        
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+        
+        button {
+            background: var(--accent);
+            color: #ffffff;
+            border: none;
+            padding: 1.2rem 3rem;
+            font-weight: 600;
+            border-radius: var(--card-radius);
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+            align-self: flex-start;
+        }
+        
+        button:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+        
+        footer {
+            padding: 4rem 8%;
+            border-top: 1px solid var(--card-border);
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Ytokyo<span>.</span></div>
+        <nav>
+            <a href="#features">Features</a>
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <div class="hero-subtitle">Professional Services & Custom Solutions</div>
+        <h1 class="hero-title">Innovative solutions for your growing business</h1>
+        <p class="hero-desc">Welcome to Ytokyo. We deliver exceptional services, custom-built strategies, and high-value results designed to help you succeed in today's dynamic market.</p>
+        <a href="#contact" class="btn">Get Started</a>
+    </div>
+
+    <section id="features">
+        <div class="section-header">
+            <span class="section-subtitle">Values</span>
+            <h2 class="section-title">Core Principles</h2>
+        </div>
+        <div class="grid">
+            <div class="card">
+                <div class="card-title">Tailored Strategy</div>
+                <p>Customized approaches designed to align perfectly with your unique goals and values.</p>
+            </div>
+            <div class="card">
+                <div class="card-title">Industry Expertise</div>
+                <p>Our team of seasoned professionals brings decades of collective experience to the table.</p>
+            </div>
+            <div class="card">
+                <div class="card-title">Proven Results</div>
+                <p>We focus on tangible outcomes, delivering measurable growth and operational efficiency.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" style="border-top: 1px solid var(--card-border); border-bottom: 1px solid var(--card-border);">
+        <div class="about-wrap">
+            <div>
+                <span class="section-subtitle">About Us</span>
+                <h2 class="section-title" style="margin-bottom: 2rem;">Who We Are</h2>
+                <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 2rem;">At Ytokyo, we believe in integrity, innovation, and long-term partnership. Our mission is to empower our clients with the tools and insights they need to navigate complex challenges and seize new opportunities. Whether you are looking to optimize your current setup or launch a brand new venture, we are here to support you every step of the way.</p>
+                <a href="#contact" class="btn">Learn More</a>
+            </div>
+            <div class="about-img">
+                <span style="font-size: 2rem; font-weight: 700; color: var(--text-main); opacity: 0.3;">Ytokyo</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="section-header">
+            <span class="section-subtitle">Services</span>
+            <h2 class="section-title">What We Offer</h2>
+        </div>
+        <div class="grid">
+            <div class="card">
+                <div class="card-title">Consulting & Strategy</div>
+                <p>Strategic analysis and pathfinding to accelerate your progress.</p>
+            </div>
+            <div class="card">
+                <div class="card-title">Execution & Delivery</div>
+                <p>Turning plans into action with robust, professional project management.</p>
+            </div>
+            <div class="card">
+                <div class="card-title">Support & Optimization</div>
+                <p>Ongoing maintenance and optimization to ensure sustained success.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" style="border-top: 1px solid var(--card-border);">
+        <div class="contact-wrap">
+            <div>
+                <span class="section-subtitle">Connect</span>
+                <h2 class="section-title" style="margin-bottom: 2rem;">Get In Touch</h2>
+                <p style="margin-bottom: 2rem;">Have a project in mind or want to know more about our solutions? Drop us a message.</p>
+                <p style="font-weight: 600; color: var(--text-main);">Email Us:</p>
+                <p style="margin-bottom: 1.5rem;">hello@ytokyo.com</p>
+                <p style="font-weight: 600; color: var(--text-main);">Call Us:</p>
+                <p>+1 (555) 019-2834</p>
+            </div>
+            <div>
+                <form action="#" onsubmit="alert('Thank you! Your message has been sent.'); return false;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
+                        <input type="text" placeholder="Your Name" required>
+                        <input type="email" placeholder="Email Address" required>
+                    </div>
+                    <textarea placeholder="Message Details" rows="6" required style="margin-bottom: 1.5rem;"></textarea>
+                    <button type="submit">Submit Request</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Ytokyo. All rights reserved.</p>
+        <div style="display: flex; gap: 2rem;">
+            <a href="#">Twitter</a>
+            <a href="#">LinkedIn</a>
+            <a href="#">Contact</a>
+        </div>
+    </footer>
+
+</body>
+</html>
